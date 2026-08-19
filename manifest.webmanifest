@@ -1,0 +1,10 @@
+{
+  "name": "Workout Guide",
+  "short_name": "Workout",
+  "description": "Full-body strength and mobility workout checklist",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c1410",
+  "theme_color": "#14211a",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
