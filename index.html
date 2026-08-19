@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14211a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Workout">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="description" content="A simple full-body strength and mobility workout checklist.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <title>Workout Guide</title>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Workout guide</p>
+        <h1 id="routine-title">Full Body A</h1>
+      </div>
+      <button class="reset" id="reset" type="button">Reset</button>
+    </header>
+
+    <nav class="tabs" aria-label="Workout routines">
+      <button class="tab active" type="button" data-routine="a" aria-selected="true">Full Body A</button>
+      <button class="tab" type="button" data-routine="b" aria-selected="false">Full Body B</button>
+      <button class="tab" type="button" data-routine="mobility" aria-selected="false">Mobility</button>
+    </nav>
+
+    <section class="summary" aria-live="polite">
+      <span id="routine-note">Strength · 3 days/week · Leave 1–3 reps in reserve</span>
+      <strong id="progress">0 / 18 sets</strong>
+    </section>
+
+    <section id="exercise-list" class="exercise-list" aria-label="Exercises"></section>
+
+    <details class="guidance" id="guidance">
+      <summary>Progression & weekly guidance</summary>
+      <div id="guidance-content"></div>
+    </details>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
