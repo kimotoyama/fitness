@@ -1,193 +1,30 @@
 <!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0c1410">
-  <title>Exercise Reference Guide</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg:#0c1410;
-      --surface:#15211a;
-      --surface2:#1b2b22;
-      --line:#304338;
-      --text:#f2f5f3;
-      --muted:#aebcb3;
-      --accent:#a8e063;
-      --accent-dark:#172813;
-      font-family: ui-rounded,"SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(circle at 50% -20%,#263f30 0,var(--bg) 42%);color:var(--text)}
-    a{color:inherit}
-    .page{width:min(100%,960px);margin:auto;padding:max(14px,env(safe-area-inset-top)) 14px max(28px,env(safe-area-inset-bottom))}
-    header{padding:8px 0 14px}
-    .eyebrow{margin:0 0 5px;color:var(--accent);font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-    h1{margin:0;font-size:clamp(1.8rem,5vw,2.7rem);line-height:1.05}
-    .intro{margin:10px 0 0;color:var(--muted);line-height:1.5;max-width:760px}
-    .backlink{display:inline-flex;align-items:center;min-height:42px;margin-top:12px;padding:0 12px;border:1px solid var(--line);border-radius:12px;background:#101a14;color:var(--text);text-decoration:none;font-weight:750;font-size:.82rem}
-    .backlink:hover,.backlink:focus{border-color:var(--accent)}
-    .nav{display:flex;gap:8px;overflow:auto;padding:4px 0 14px;position:sticky;top:0;z-index:5;background:linear-gradient(var(--bg) 80%,transparent)}
-    .nav a{flex:0 0 auto;text-decoration:none;padding:9px 12px;border:1px solid var(--line);border-radius:999px;background:#101a14;color:var(--muted);font-weight:750;font-size:.82rem}
-    .nav a:hover,.nav a:focus{border-color:var(--accent);color:var(--text)}
-    section{scroll-margin-top:70px;margin:18px 0 34px}
-    .section-head{display:flex;justify-content:space-between;gap:10px;align-items:end;margin-bottom:10px}
-    h2{margin:0;font-size:1.35rem}
-    .section-note{margin:0;color:var(--muted);font-size:.8rem;text-align:right}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-    .card{border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,var(--surface),#111c16);overflow:hidden}
-    .visual{display:grid;place-items:center;min-height:190px;padding:12px;background:linear-gradient(180deg,#16261d,#101812)}
-    .visual svg{width:100%;max-width:300px;height:170px}
-    .body-line{stroke:#e8efea;stroke-width:7;stroke-linecap:round;stroke-linejoin:round;fill:none}
-    .joint{fill:#e8efea}
-    .prop{stroke:var(--accent);stroke-width:7;stroke-linecap:round;fill:none}
-    .ghost{stroke:#66786d;stroke-width:4;stroke-dasharray:8 8;fill:none}
-    .floor{stroke:#53655a;stroke-width:3}
-    .arrow{stroke:var(--accent);stroke-width:4;fill:none;marker-end:url(#arrow)}
-    .info{padding:12px 13px 14px}
-    h3{margin:0 0 6px;font-size:1.02rem}
-    .dose{display:inline-block;margin-bottom:6px;padding:3px 7px;border-radius:999px;background:var(--accent);color:var(--accent-dark);font-size:.73rem;font-weight:850}
-    .cue{margin:0;color:#d7e0da;font-size:.83rem;line-height:1.42}
-    .why{margin:7px 0 0;color:var(--muted);font-size:.76rem;line-height:1.35}
-    .callout{margin:26px 0;padding:14px;border:1px solid #45623d;border-radius:14px;background:#132016;color:#dce7de;line-height:1.45}
-    .callout strong{color:var(--accent)}
-    footer{padding:12px 0 24px;color:var(--muted);font-size:.75rem;line-height:1.45}
-    @media(max-width:700px){.grid{grid-template-columns:1fr}.visual{min-height:170px}.visual svg{height:150px}.section-head{display:block}.section-note{text-align:left;margin-top:4px}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
-</head>
-<body>
-  <main class="page">
-    <header>
-      <p class="eyebrow">Visual reference</p>
-      <h1>Strength & Mobility Exercise Guide</h1>
-      <p class="intro">A companion to the workout checklist. Use this page for form reminders, movement cues, and the added band/ring work. Strength reps should generally be controlled: about 2–3 seconds down and 1–2 seconds up, with no need to rush between exercises.</p>
-      <a class="backlink" href="index.html">← Workout Checklist</a>
-    </header>
-
-    <nav class="nav" aria-label="Sections">
-      <a href="#a">Full Body A</a><a href="#b">Full Body B</a><a href="#lower">Lower Mobility</a><a href="#upper">Upper Mobility</a><a href="#bands">Bands</a><a href="#rings">Rings</a>
-    </nav>
-
-    <div id="content"></div>
-
-    <div class="callout"><strong>Progression rule:</strong> once you reach the top of the rep range with good form and 1–3 reps still in reserve, make the movement harder rather than simply adding endless reps.</div>
-
-    <footer>Stop any movement that causes sharp pain, numbness, or joint pain. Mild muscular effort and stretching discomfort are expected; pain is not.</footer>
-  </main>
-
-  <script>
-    const sections = [
-      {id:'a', title:'Full Body A', note:'Strength · 3 days/week', items:[
-        ['Push-up','3 × 6–10','Keep a straight line; elbows roughly 30–45° from torso.','Chest · triceps · shoulders','pushup'],
-        ['Chin-up','3 × good reps','Palms toward you; pull from a controlled hang without swinging.','Back · biceps','chinup'],
-        ['Bulgarian split squat','3 × 8–12 / leg','Rear foot elevated; load the front leg and descend under control.','Quads · glutes','split'],
-        ['Single-leg glute bridge','3 × 10–15 / leg','Drive through the planted foot and keep the pelvis level.','Glutes · hamstrings','bridge'],
-        ['Pike push-up','2 × 6–10','Keep hips high; head travels forward and down between the hands.','Shoulders · triceps','pike'],
-        ['Single-leg calf raise','2 × 12–20 / leg','Use full range: stretch low, rise high, pause briefly.','Calves','calf'],
-        ['Dead bug','2 × 8–12 / side','Keep lower back gently pressed down while opposite arm/leg extend.','Core','deadbug']
-      ]},
-      {id:'b', title:'Full Body B', note:'Alternate A/B/A, then B/A/B', items:[
-        ['Feet-elevated or regular push-up','3 × 6–12','Use regular push-ups until the target range becomes easy.','Chest · triceps','decline'],
-        ['Pull-up or chin-up','3 × good reps','Use overhand pull-ups if comfortable; otherwise chin-ups are fine.','Back · biceps','pullup'],
-        ['Reverse lunge','3 × 8–12 / leg','Step backward and lower under control; front leg does most of the work.','Quads · glutes','lunge'],
-        ['Single-leg Romanian deadlift','3 × 8–12 / leg','Push hips backward; keep spine long and feel the standing-leg hamstring.','Hamstrings · glutes','rdl'],
-        ['Pike push-up','2 × 6–10','Keep hips high and use a more vertical pressing path.','Shoulders · triceps','pike'],
-        ['Side plank','2 × 20–45 sec / side','Stack shoulders and hips; do not let the pelvis sag.','Core · lateral trunk','sideplank'],
-        ['Cossack squat','2 × 5–8 / side','Shift into one hip while the opposite leg stays long; depth is secondary to control.','Adductors · hips · legs','cossack']
-      ]},
-      {id:'lower', title:'Lower-body Mobility', note:'10–15 min · little/no rest', items:[
-        ['Deep squat hold with movement','60 sec','Sit as deep as comfortable; shift gently side-to-side and breathe.','Hips · ankles','deepsquat'],
-        ['90/90 hip switches','10 slow reps','Rotate both knees from side to side with control.','Hip internal/external rotation','9090switch'],
-        ['90/90 forward lean','30–45 sec / side','Lean from the hips with a long spine over the front leg.','Hip external rotation · glute','9090lean'],
-        ['Half-kneeling hip-flexor stretch','30–45 sec / side','Slightly tuck pelvis and squeeze the glute of the kneeling side.','Hip flexors','hipflexor'],
-        ['Active hamstring rock-back','8–10 / side','Extend the front leg and rock hips backward rather than rounding the back.','Hamstrings','hamrock'],
-        ['Cossack squat','5 slow reps / side','Use only the range you can control; do not force depth.','Adductors · hips','cossack'],
-        ['Knee-to-wall ankle mobility','10 / side','Drive knee forward over toes while keeping the heel planted.','Ankle dorsiflexion','ankle']
-      ]},
-      {id:'upper', title:'Upper-body Mobility', note:'8–10 min · 3–5×/week', items:[
-        ['Wall slide','8–12 reps','Slide arms upward without excessively arching the lower back.','Shoulder flexion · scapular control','wallslide'],
-        ['Band pass-through','8–12 slow reps','Use a very wide grip and move overhead/back only through a comfortable range.','Shoulders · chest','passthrough'],
-        ['Band external rotation','10–15 / side','Keep elbow tucked and rotate the forearm outward.','Rotator cuff','externalrot'],
-        ['Doorway pec stretch','30–45 sec / side','Forearm on doorway; gently rotate torso away.','Chest · anterior shoulder','doorpec'],
-        ['Lat stretch','30–45 sec / side','Hands supported; sit hips back and let chest sink down.','Lats · overhead range','latstretch'],
-        ['Thread the needle','6–8 / side','Rotate under, then open toward the ceiling; movement comes from upper back.','Thoracic rotation','thread'],
-        ['Dead hang','20–40 sec × 1–2','Relax into a comfortable hang while maintaining enough shoulder control to avoid pain.','Shoulders · lats','hang']
-      ]},
-      {id:'bands', title:'Resistance-band Additions', note:'High-value accessory work', items:[
-        ['Band face pull','2–3 × 12–20','Anchor near face height; pull toward the face with elbows out.','Rear delts · upper back · external rotation','facepull'],
-        ['Band pull-apart','2 × 15–25','Keep arms mostly straight and pull the band apart without shrugging.','Upper back · rear shoulders','pullapart'],
-        ['Band lateral raise','2–3 × 10–20','Stand on the band and raise arms out to about shoulder height.','Side delts','lateral'],
-        ['Band hamstring curl','2–3 × 10–15','Anchor low and curl heel toward butt without swinging the thigh.','Hamstrings · knee flexion','hamcurl'],
-        ['Pallof press','2 × 8–12 / side','Stand sideways to the anchor and press straight out without rotating.','Anti-rotation core','pallof']
-      ]},
-      {id:'rings', title:'Gymnastic-ring Additions', note:'Best expansion for the home setup', items:[
-        ['Ring row','3 × 8–15','Keep body straight and pull rings toward ribs; move feet forward to make it harder.','Horizontal pull · back · biceps','ringrow'],
-        ['Ring push-up','3 × 6–12','Keep rings stable and descend under control; start with rings higher if needed.','Chest · triceps · stabilizers','ringpush'],
-        ['Ring support hold','2–3 × 15–30 sec','Arms straight, shoulders down, rings close to the body.','Shoulder stability · triceps','support'],
-        ['Ring biceps curl','2–3 × 8–15','Keep upper arms relatively fixed and bring rings toward the forehead.','Biceps','ringcurl'],
-        ['Ring triceps extension','2–3 × 8–15','Face away from anchor and bend mainly at the elbows.','Triceps','ringtri'],
-        ['Ring fallout','2 × 6–12','Lean forward as arms travel overhead; start with a very small range.','Abs · lats · shoulder control','fallout']
-      ]}
-    ];
-
-    function person(type){
-      const defs='<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#a8e063"/></marker></defs>';
-      const floor='<line class="floor" x1="20" y1="150" x2="280" y2="150"/>';
-      const head=(x,y)=>`<circle class="joint" cx="${x}" cy="${y}" r="10"/>`;
-      switch(type){
-        case 'pushup': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(75,88)}<path class="body-line" d="M85 92 L145 106 L220 122 M145 106 L130 135 M130 135 L100 145 M145 106 L170 137 M170 137 L195 145"/><path class="ghost" d="M85 70 L150 83 L225 98"/><path class="arrow" d="M150 70 L150 101"/></svg>`;
-        case 'chinup': case 'pullup': case 'hang': return `<svg viewBox="0 0 300 170">${defs}<line class="prop" x1="55" y1="25" x2="245" y2="25"/>${head(150,62)}<path class="body-line" d="M145 72 L140 118 M140 118 L118 147 M140 118 L165 147 M145 80 L105 35 M145 80 L195 35"/>${type==='hang'?'':'<path class="arrow" d="M245 110 L245 55"/>'}</svg>`;
-        case 'split': return `<svg viewBox="0 0 300 170">${defs}${floor}<rect x="218" y="102" width="48" height="10" rx="4" fill="#a8e063"/>${head(137,43)}<path class="body-line" d="M140 54 L146 95 M146 95 L115 145 M146 95 L224 105 M140 70 L110 95 M140 70 L170 92"/><path class="arrow" d="M90 65 L90 118"/></svg>`;
-        case 'bridge': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(62,125)}<path class="body-line" d="M72 128 L125 105 L175 105 M175 105 L215 145 M125 105 L115 145 M175 105 L215 72"/><path class="arrow" d="M150 135 L150 95"/></svg>`;
-        case 'pike': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(83,121)}<path class="body-line" d="M92 120 L145 67 L225 145 M145 67 L120 145 M145 67 L170 145"/><path class="arrow" d="M80 82 L80 118"/></svg>`;
-        case 'calf': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(145,40)}<path class="body-line" d="M145 51 L145 100 M145 68 L115 88 M145 68 L175 88 M145 100 L135 142 M145 100 L165 142"/><path class="arrow" d="M205 136 L205 90"/></svg>`;
-        case 'deadbug': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(73,126)}<path class="body-line" d="M83 128 L140 128 M110 126 L80 88 M140 128 L210 106 M140 128 L180 150 M110 126 L150 78"/><path class="arrow" d="M220 94 L250 78"/></svg>`;
-        case 'decline': return `<svg viewBox="0 0 300 170">${defs}${floor}<rect x="210" y="110" width="55" height="12" rx="4" fill="#a8e063"/>${head(75,112)}<path class="body-line" d="M85 115 L145 112 L220 114 M145 112 L126 145 M145 112 L169 145"/></svg>`;
-        case 'lunge': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(140,38)}<path class="body-line" d="M140 49 L142 93 M142 93 L108 145 M142 93 L205 145 M140 66 L110 92 M140 66 L170 88"/><path class="arrow" d="M225 75 L225 132"/></svg>`;
-        case 'rdl': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(115,62)}<path class="body-line" d="M124 67 L162 90 M162 90 L148 145 M162 90 L225 75 M140 79 L118 115 M140 79 L165 111"/><path class="arrow" d="M185 52 L225 70"/></svg>`;
-        case 'sideplank': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(100,88)}<path class="body-line" d="M110 92 L160 112 L225 140 M150 108 L132 145 M152 108 L170 78"/></svg>`;
-        case 'cossack': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(126,54)}<path class="body-line" d="M130 64 L140 98 M140 98 L98 142 M140 98 L236 145 M135 78 L100 95 M135 78 L168 95"/><path class="arrow" d="M75 90 L105 120"/></svg>`;
-        case 'deepsquat': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(150,45)}<path class="body-line" d="M150 55 L150 98 M150 98 L112 145 M150 98 L190 145 M150 75 L115 105 M150 75 L185 105"/><path class="arrow" d="M225 65 L225 125"/></svg>`;
-        case '9090switch': case '9090lean': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(type==='9090lean'?128:145,type==='9090lean'?62:48)}<path class="body-line" d="M${type==='9090lean'?'137 67 L165 98':'145 58 L145 100'} M145 100 L105 125 L80 145 M145 100 L190 120 L225 145 M145 72 L115 94 M145 72 L175 94"/><path class="arrow" d="M80 80 Q150 45 220 80"/></svg>`;
-        case 'hipflexor': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(140,40)}<path class="body-line" d="M140 51 L145 92 M145 92 L105 145 M145 92 L198 118 L218 145 M140 68 L110 90 M140 68 L170 90"/><path class="arrow" d="M178 70 L193 99"/></svg>`;
-        case 'hamrock': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(118,64)}<path class="body-line" d="M126 70 L158 94 M158 94 L102 145 M158 94 L225 145 M145 85 L112 108"/><path class="arrow" d="M185 63 L155 87"/></svg>`;
-        case 'ankle': return `<svg viewBox="0 0 300 170">${defs}${floor}<line class="prop" x1="235" y1="25" x2="235" y2="150"/>${head(118,42)}<path class="body-line" d="M118 53 L130 97 M130 97 L105 145 M130 97 L205 145 M118 70 L90 95"/><path class="arrow" d="M185 98 L225 98"/></svg>`;
-        case 'wallslide': return `<svg viewBox="0 0 300 170">${defs}${floor}<line class="prop" x1="235" y1="20" x2="235" y2="150"/>${head(190,50)}<path class="body-line" d="M195 60 L200 108 M200 108 L188 145 M200 108 L215 145 M195 72 L165 55 M195 72 L220 48"/><path class="arrow" d="M150 100 L150 50"/></svg>`;
-        case 'passthrough': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(150,48)}<path class="body-line" d="M150 58 L150 108 M150 108 L130 145 M150 108 L170 145 M150 72 L95 40 M150 72 L205 40"/><path class="prop" d="M85 35 L215 35"/><path class="arrow" d="M225 45 Q250 85 225 120"/></svg>`;
-        case 'externalrot': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(150,43)}<path class="body-line" d="M150 54 L150 108 M150 108 L130 145 M150 108 L170 145 M150 72 L120 92 M150 72 L180 92"/><path class="prop" d="M180 92 L230 92"/><path class="arrow" d="M182 92 Q208 65 230 82"/></svg>`;
-        case 'doorpec': return `<svg viewBox="0 0 300 170">${defs}${floor}<line class="prop" x1="70" y1="20" x2="70" y2="150"/>${head(145,45)}<path class="body-line" d="M145 56 L150 108 M150 108 L130 145 M150 108 L170 145 M145 72 L95 72 M145 72 L175 90"/><path class="arrow" d="M190 70 Q225 80 230 110"/></svg>`;
-        case 'latstretch': return `<svg viewBox="0 0 300 170">${defs}${floor}<line class="prop" x1="210" y1="85" x2="270" y2="85"/>${head(130,86)}<path class="body-line" d="M140 90 L180 105 M180 105 L135 145 M180 105 L220 145 M150 95 L205 85"/><path class="arrow" d="M110 70 L130 95"/></svg>`;
-        case 'thread': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(120,82)}<path class="body-line" d="M130 88 L170 110 M170 110 L145 145 M170 110 L205 145 M150 100 L95 125 M150 100 L195 70"/><path class="arrow" d="M205 60 Q235 80 215 105"/></svg>`;
-        case 'facepull': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(155,45)}<path class="body-line" d="M155 56 L155 108 M155 108 L135 145 M155 108 L175 145 M155 72 L115 62 M155 72 L195 62"/><path class="prop" d="M40 62 L115 62 M195 62 L270 62"/><path class="arrow" d="M105 45 L135 55 M205 45 L175 55"/></svg>`;
-        case 'pullapart': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(150,45)}<path class="body-line" d="M150 56 L150 108 M150 108 L130 145 M150 108 L170 145 M150 72 L95 72 M150 72 L205 72"/><path class="prop" d="M95 72 L205 72"/><path class="arrow" d="M120 52 L90 52 M180 52 L210 52"/></svg>`;
-        case 'lateral': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(150,43)}<path class="body-line" d="M150 54 L150 108 M150 108 L130 145 M150 108 L170 145 M150 72 L90 72 M150 72 L210 72"/><path class="prop" d="M130 145 L90 72 M170 145 L210 72"/><path class="arrow" d="M85 105 L85 70 M215 105 L215 70"/></svg>`;
-        case 'hamcurl': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(145,42)}<path class="body-line" d="M145 53 L145 103 M145 103 L125 145 M145 103 L190 120 L170 145"/><path class="prop" d="M170 145 L235 145"/><path class="arrow" d="M202 135 Q205 105 185 95"/></svg>`;
-        case 'pallof': return `<svg viewBox="0 0 300 170">${defs}${floor}${head(150,42)}<path class="body-line" d="M150 53 L150 108 M150 108 L130 145 M150 108 L170 145 M150 72 L205 72"/><path class="prop" d="M40 72 L205 72"/><path class="arrow" d="M175 50 L215 50"/></svg>`;
-        case 'ringrow': return `<svg viewBox="0 0 300 170">${defs}${floor}<line class="prop" x1="230" y1="20" x2="230" y2="75"/><circle cx="215" cy="80" r="12" stroke="#a8e063" stroke-width="5" fill="none"/>${head(115,90)}<path class="body-line" d="M125 94 L170 112 L225 145 M150 104 L205 82"/><path class="arrow" d="M95 70 L130 88"/></svg>`;
-        case 'ringpush': return `<svg viewBox="0 0 300 170">${defs}${floor}<line class="prop" x1="245" y1="20" x2="245" y2="70"/><circle cx="215" cy="88" r="12" stroke="#a8e063" stroke-width="5" fill="none"/>${head(82,108)}<path class="body-line" d="M92 110 L150 118 L222 135 M145 118 L205 90"/><path class="arrow" d="M90 80 L90 105"/></svg>`;
-        case 'support': return `<svg viewBox="0 0 300 170">${defs}<line class="prop" x1="105" y1="20" x2="105" y2="70"/><line class="prop" x1="195" y1="20" x2="195" y2="70"/><circle cx="115" cy="85" r="12" stroke="#a8e063" stroke-width="5" fill="none"/><circle cx="185" cy="85" r="12" stroke="#a8e063" stroke-width="5" fill="none"/>${head(150,45)}<path class="body-line" d="M150 56 L150 112 M150 112 L130 150 M150 112 L170 150 M150 72 L115 85 M150 72 L185 85"/></svg>`;
-        case 'ringcurl': return `<svg viewBox="0 0 300 170">${defs}<line class="prop" x1="230" y1="20" x2="230" y2="70"/><circle cx="210" cy="82" r="12" stroke="#a8e063" stroke-width="5" fill="none"/>${head(115,83)}<path class="body-line" d="M125 88 L170 105 L225 145 M145 98 L205 84"/><path class="arrow" d="M190 105 L205 85"/></svg>`;
-        case 'ringtri': return `<svg viewBox="0 0 300 170">${defs}<line class="prop" x1="70" y1="20" x2="70" y2="70"/><circle cx="90" cy="82" r="12" stroke="#a8e063" stroke-width="5" fill="none"/>${head(165,88)}<path class="body-line" d="M155 92 L130 110 L80 145 M145 100 L95 84"/><path class="arrow" d="M145 65 L165 85"/></svg>`;
-        case 'fallout': return `<svg viewBox="0 0 300 170">${defs}<line class="prop" x1="245" y1="20" x2="245" y2="70"/><circle cx="215" cy="82" r="12" stroke="#a8e063" stroke-width="5" fill="none"/>${head(105,75)}<path class="body-line" d="M115 80 L155 105 L220 145 M145 98 L210 82"/><path class="arrow" d="M95 55 Q135 35 170 55"/></svg>`;
-        default: return `<svg viewBox="0 0 300 170">${defs}${floor}${head(150,45)}<path class="body-line" d="M150 56 L150 108 M150 108 L130 145 M150 108 L170 145 M150 72 L120 92 M150 72 L180 92"/></svg>`;
-      }
-    }
-
-    const content=document.getElementById('content');
-    for(const s of sections){
-      const sec=document.createElement('section'); sec.id=s.id;
-      sec.innerHTML=`<div class="section-head"><h2>${s.title}</h2><p class="section-note">${s.note}</p></div>`;
-      const grid=document.createElement('div'); grid.className='grid';
-      for(const [name,dose,cue,why,type] of s.items){
-        const card=document.createElement('article'); card.className='card';
-        card.innerHTML=`<div class="visual" aria-hidden="true">${person(type)}</div><div class="info"><h3>${name}</h3><span class="dose">${dose}</span><p class="cue">${cue}</p><p class="why">${why}</p></div>`;
-        grid.appendChild(card);
-      }
-      sec.appendChild(grid); content.appendChild(sec);
-    }
-  </script>
-</body>
-</html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0c1410"><title>Exercise Visual Guide</title>
+<style>
+:root{color-scheme:dark;--bg:#0c1410;--card:#142019;--panel:#0d1711;--line:#304338;--text:#f2f5f3;--muted:#aebcb3;--a:#a8e063;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -10%,#263f30,var(--bg) 42%);color:var(--text)}a{color:inherit}.page{max-width:1080px;margin:auto;padding:16px}.eyebrow{color:var(--a);font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;margin:0 0 4px}h1{margin:0;font-size:clamp(1.8rem,5vw,2.6rem)}.intro{color:var(--muted);line-height:1.5;max-width:800px}.chips{display:flex;gap:8px;overflow:auto;padding:8px 0 14px;position:sticky;top:0;z-index:4;background:linear-gradient(var(--bg) 82%,transparent)}.chips a{text-decoration:none;white-space:nowrap;border:1px solid var(--line);border-radius:999px;padding:8px 11px;background:#101a14;color:var(--muted);font-size:.8rem;font-weight:700}.back{display:inline-block;margin:4px 0 6px;text-decoration:none;color:var(--a);font-weight:750}section{scroll-margin-top:58px;margin:20px 0 34px}.sh{display:flex;justify-content:space-between;gap:10px;align-items:end}.sh h2{margin:0}.sh p{margin:0;color:var(--muted);font-size:.8rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}.card{border:1px solid var(--line);border-radius:16px;background:var(--card);overflow:hidden}.scenes{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:9px;background:#101a14}.scene{border:1px solid #28392f;border-radius:12px;background:var(--panel);padding:7px}.scene b{display:block;color:var(--a);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;margin-bottom:3px}.scene svg{width:100%;height:185px;display:block}.torso{stroke:#e9f0eb;stroke-width:18;stroke-linecap:round}.limb{stroke:#e9f0eb;stroke-width:10;stroke-linecap:round;stroke-linejoin:round;fill:none}.head{fill:#e9f0eb}.prop{stroke:var(--a);stroke-width:7;stroke-linecap:round;fill:none}.floor{stroke:#53655a;stroke-width:3}.move{stroke:var(--a);stroke-width:4;stroke-dasharray:5 5;fill:none}.info{padding:11px 13px 14px}.info h3{margin:0 0 6px;font-size:1rem}.dose{display:inline-block;background:var(--a);color:#172813;border-radius:999px;padding:3px 7px;font-size:.72rem;font-weight:850}.cue{margin:7px 0 0;line-height:1.4;font-size:.83rem}.target{margin:6px 0 0;color:var(--muted);font-size:.76rem}.note{border:1px solid #45623d;background:#132016;border-radius:14px;padding:13px;line-height:1.45}.note strong{color:var(--a)}footer{color:var(--muted);font-size:.75rem;padding:8px 0 24px}@media(max-width:820px){.grid{grid-template-columns:1fr}}@media(max-width:560px){.scenes{grid-template-columns:1fr}.scene svg{height:165px}.sh{display:block}.sh p{margin-top:3px}}
+</style></head><body><main class="page">
+<p class="eyebrow">Visual reference</p><h1>Strength & Mobility Exercise Guide</h1>
+<p class="intro">Each exercise shows two full-body scenes—<b>Start</b> and <b>Finish</b>—so the posture change is easy to compare. Use the checklist page to track sets; use this page to check form.</p>
+<a class="back" href="index.html">← Workout Checklist</a>
+<nav class="chips"><a href="#a">Full Body A</a><a href="#b">Full Body B</a><a href="#lower">Lower Mobility</a><a href="#upper">Upper Mobility</a><a href="#bands">Bands</a><a href="#rings">Rings</a></nav>
+<div id="root"></div>
+<div class="note"><strong>How to use the pictures:</strong> match the overall body line first—torso, hip position, and limb angles—rather than trying to copy an exact depth. For strength work, move under control and leave roughly 1–3 good reps in reserve.</div>
+<footer>Stop any movement that causes sharp pain, numbness, or joint pain.</footer>
+</main><script>
+const S=[
+["a","Full Body A","Strength · 3 days/week",[
+["Push-up","3 × 6–10","Straight body line; lower chest between hands.","Chest · triceps · shoulders","push"],["Chin-up","3 × good reps","Start from a controlled hang; finish with chin above bar.","Back · biceps","chin"],["Bulgarian split squat","3 × 8–12 / leg","Rear foot supported; descend mainly through front leg.","Quads · glutes","split"],["Single-leg glute bridge","3 × 10–15 / leg","Lift hips until shoulder–hip–knee form a line.","Glutes · hamstrings","bridge"],["Pike push-up","2 × 6–10","Keep hips high; lower head toward the floor between hands.","Shoulders · triceps","pike"],["Single-leg calf raise","2 × 12–20 / leg","Start heel low; finish tall on the ball of the foot.","Calves","calf"],["Dead bug","2 × 8–12 / side","Keep back down while opposite arm and leg extend.","Core","deadbug"]]],
+["b","Full Body B","Alternate A/B/A, then B/A/B",[
+["Feet-elevated or regular push-up","3 × 6–12","Same rigid body line; elevated feet shift more work upward.","Chest · triceps","decline"],["Pull-up or chin-up","3 × good reps","Pull without swinging; shoulders stay controlled.","Back · biceps","chin"],["Reverse lunge","3 × 8–12 / leg","Step back, lower vertically, then drive through front leg.","Quads · glutes","lunge"],["Single-leg Romanian deadlift","3 × 8–12 / leg","Hinge at hip; back leg extends as torso tips forward.","Hamstrings · glutes","rdl"],["Pike push-up","2 × 6–10","Keep hips high throughout.","Shoulders · triceps","pike"],["Side plank","2 × 20–45 sec / side","Finish with shoulder, hip and ankle in one straight line.","Core · lateral trunk","sideplank"],["Cossack squat","2 × 5–8 / side","Shift into one hip while opposite leg stays long.","Adductors · hips · legs","cossack"]]],
+["lower","Lower-body Mobility","10–15 min · little/no rest",[
+["Deep squat hold with movement","60 sec","Move from a comfortable squat into a deeper supported position.","Hips · ankles","squat"],["90/90 hip switches","10 slow reps","Rotate both knees from one 90/90 side to the other.","Hip rotation","9090"],["90/90 forward lean","30–45 sec / side","Keep the 90/90 legs and hinge torso toward front shin.","Hip external rotation · glute","9090lean"],["Half-kneeling hip-flexor stretch","30–45 sec / side","Tuck pelvis slightly and glide hips forward a little.","Hip flexors","hipflex"],["Active hamstring rock-back","8–10 / side","From half-kneeling, straighten front leg and sit hips back.","Hamstrings","hamrock"],["Cossack squat","5 slow reps / side","Move side-to-side only through a controlled range.","Adductors · hips","cossack"],["Knee-to-wall ankle mobility","10 / side","Keep heel down while knee travels forward over toes.","Ankle dorsiflexion","ankle"]]],
+["upper","Upper-body Mobility","8–10 min · 3–5×/week",[
+["Wall slide","8–12 reps","Slide elbows/hands upward while ribs stay down.","Shoulders · scapulae","wall"],["Band pass-through","8–12 slow reps","Wide grip; move band from front to overhead/behind.","Shoulders · chest","pass"],["Band external rotation","10–15 / side","Keep elbow tucked; rotate forearm outward.","Rotator cuff","extrot"],["Doorway pec stretch","30–45 sec / side","Forearm on frame; rotate chest gently away.","Chest · anterior shoulder","pec"],["Lat stretch","30–45 sec / side","Hands supported; sit hips back and sink chest down.","Lats · overhead range","lat"],["Thread the needle","6–8 / side","Reach under body, then rotate arm and chest open.","Thoracic rotation","thread"],["Dead hang","20–40 sec × 1–2","Move from active shoulder position into a comfortable relaxed hang.","Shoulders · lats","hang"]]],
+["bands","Resistance-band Additions","Accessory work",[
+["Band face pull","2–3 × 12–20","Pull hands toward face and separate them; elbows stay high.","Rear delts · upper back","face"],["Band pull-apart","2 × 15–25","Start hands in front; finish arms spread wide.","Upper back · rear shoulders","apart"],["Band lateral raise","2–3 × 10–20","Start hands at sides; finish near shoulder height.","Side delts","lateral"],["Band hamstring curl","2–3 × 10–15","Keep thigh still while heel curls toward butt.","Hamstrings","hamcurl"],["Pallof press","2 × 8–12 / side","Start band at chest; press straight out without rotating.","Anti-rotation core","pallof"]]],
+["rings","Gymnastic-ring Additions","High-value home-gym additions",[
+["Ring row","3 × 8–15","Start arms long; pull chest toward rings.","Back · biceps","ringrow"],["Ring push-up","3 × 6–12","Keep rings stable; descend chest between them.","Chest · triceps · stabilizers","ringpush"],["Ring support hold","2–3 × 15–30 sec","Move from feet-assisted support to straight-arm body support.","Shoulder stability · triceps","support"],["Ring biceps curl","2–3 × 8–15","Keep upper arms high; curl rings toward forehead.","Biceps","ringcurl"],["Ring triceps extension","2–3 × 8–15","Keep body rigid; bend then straighten elbows.","Triceps","ringtri"],["Ring fallout","2 × 6–12","Start upright; lean forward as straight arms travel overhead.","Abs · lats · shoulders","fallout"]]]];
+const P={stand:[[145,34,145,58,145,100,120,82,108,100,170,82,182,100,132,124,126,150,158,124,164,150],[145,34,145,58,145,100,120,82,108,100,170,82,182,100,132,124,126,150,158,124,164,150]],push:[[72,95,92,100,170,116,118,118,100,146,118,118,100,146,192,126,222,146,192,126,222,146],[72,116,94,118,170,126,120,128,102,146,120,128,102,146,192,132,222,146,192,132,222,146]],chin:[[145,64,145,82,145,116,110,72,104,30,180,72,186,30,132,132,120,152,158,132,170,152],[145,34,145,52,145,94,115,58,104,30,175,58,186,30,132,116,120,148,158,116,170,148]],split:[[130,34,132,58,140,96,112,78,98,96,164,78,180,96,116,118,104,150,190,112,226,114],[128,50,130,70,138,108,108,88,96,106,162,88,178,106,116,130,104,150,196,120,226,114]],bridge:[[64,126,88,124,140,126,108,126,100,145,166,126,198,86,112,136,102,150,170,136,198,150],[64,126,88,122,140,106,108,116,100,145,166,108,198,82,112,124,102,150,174,126,202,150]],pike:[[86,118,104,110,145,68,122,96,112,150,166,96,176,150,128,104,120,150,198,110,224,150],[112,120,124,110,147,78,132,108,118,150,164,108,176,150,132,112,120,150,198,112,224,150]],calf:[[145,35,145,58,145,102,118,82,108,100,172,82,182,100,132,126,126,150,160,126,164,150],[145,30,145,53,145,96,118,77,108,95,172,77,182,95,134,120,130,145,158,120,160,145]],deadbug:[[72,126,96,124,132,126,110,102,98,84,112,108,150,80,154,110,178,130,152,118,174,148],[72,126,96,124,132,126,112,98,92,78,114,108,160,82,156,118,202,104,154,124,174,150]],decline:[[72,108,94,110,168,116,120,120,100,145,120,120,100,145,190,118,220,112,190,118,220,112],[72,122,94,122,168,124,120,132,102,146,120,132,102,146,190,126,220,118,190,126,220,118]],lunge:[[138,34,138,58,142,94,112,78,100,96,168,78,182,96,118,118,104,150,188,118,214,150],[138,46,138,68,142,106,112,88,100,106,168,88,182,106,116,130,104,150,190,132,220,150]],rdl:[[140,34,140,58,142,98,112,80,100,98,170,80,182,98,130,124,126,150,160,124,164,150],[110,64,126,74,160,94,122,92,108,112,170,100,188,116,148,122,144,150,196,88,226,76]],sideplank:[[100,92,120,96,168,116,142,108,126,150,142,108,126,150,188,126,220,142,188,126,220,142],[100,82,120,88,170,108,144,100,130,142,144,100,130,142,190,118,224,136,190,118,224,136]],cossack:[[145,34,145,58,145,98,116,80,104,96,174,80,186,96,112,124,94,150,184,124,224,150],[124,52,132,70,142,106,108,88,92,104,166,88,182,104,106,130,90,150,188,118,230,150]],squat:[[145,34,145,58,145,98,116,80,104,96,174,80,186,96,120,124,106,150,170,124,184,150],[145,50,145,70,145,108,112,90,98,108,178,90,192,108,116,134,100,150,174,134,190,150]],9090:[[145,44,145,66,145,102,116,84,100,102,174,84,190,102,110,118,82,146,184,120,220,146],[145,44,145,66,145,102,116,84,100,102,174,84,190,102,106,120,70,146,188,118,212,146]],9090lean:[[145,48,145,70,145,102,116,84,100,102,174,84,190,102,110,118,82,146,184,120,220,146],[120,70,132,78,158,104,116,92,98,108,168,92,184,108,118,122,88,146,190,120,224,146]],hipflex:[[140,34,140,58,146,96,114,80,102,98,170,80,184,98,116,120,104,150,190,120,218,150],[140,34,140,58,152,98,116,80,104,98,176,80,190,98,118,122,106,150,198,120,226,150]],hamrock:[[140,34,140,58,146,96,114,80,102,98,170,80,184,98,116,120,104,150,188,122,210,150],[116,64,128,74,158,98,116,90,100,106,170,90,186,106,112,124,96,150,194,126,224,150]],ankle:[[132,34,132,58,142,98,108,80,96,98,168,80,182,98,116,124,104,150,184,122,212,150],[132,34,132,58,154,98,110,80,98,98,170,80,184,98,118,126,104,150,198,124,224,150]],wall:[[180,34,184,58,188,102,158,82,150,104,214,82,218,104,176,126,172,150,202,126,208,150],[180,34,184,58,188,102,158,52,150,30,214,52,222,28,176,126,172,150,202,126,208,150]],pass:[[145,34,145,58,145,102,110,82,92,84,180,82,198,84,132,126,128,150,158,126,162,150],[145,34,145,58,145,102,112,54,98,34,178,54,192,34,132,126,128,150,158,126,162,150]],extrot:[[145,34,145,58,145,102,118,78,116,104,172,78,172,104,132,126,128,150,158,126,162,150],[145,34,145,58,145,102,118,78,100,88,172,78,190,88,132,126,128,150,158,126,162,150]],pec:[[145,34,145,58,145,102,110,76,84,76,174,82,190,100,132,126,128,150,158,126,162,150],[162,34,162,58,166,102,118,76,84,76,188,82,202,100,150,126,146,150,178,126,182,150]],lat:[[132,60,140,76,172,100,152,88,202,84,188,92,214,84,138,124,126,150,198,124,214,150],[120,82,132,90,176,102,148,96,202,84,190,98,216,84,140,126,126,150,204,126,220,150]],thread:[[120,74,132,86,168,108,138,98,98,124,182,98,194,96,148,128,142,150,190,128,204,150],[120,74,132,86,168,108,140,100,112,132,180,92,194,62,148,128,142,150,190,128,204,150]],hang:[[145,58,145,78,145,118,112,80,104,30,178,80,186,30,132,134,120,152,158,134,170,152],[145,66,145,86,145,126,112,88,104,30,178,88,186,30,132,140,120,154,158,140,170,154]],face:[[145,34,145,58,145,102,110,78,82,78,180,78,208,78,132,126,128,150,158,126,162,150],[145,34,145,58,145,102,118,72,128,56,172,72,162,56,132,126,128,150,158,126,162,150]],apart:[[145,34,145,58,145,102,120,78,116,80,170,78,174,80,132,126,128,150,158,126,162,150],[145,34,145,58,145,102,108,76,86,76,182,76,204,76,132,126,128,150,158,126,162,150]],lateral:[[145,34,145,58,145,102,120,78,118,108,170,78,172,108,132,126,128,150,158,126,162,150],[145,34,145,58,145,102,108,76,88,76,182,76,202,76,132,126,128,150,158,126,162,150]],hamcurl:[[145,34,145,58,145,102,118,80,106,98,172,80,184,98,132,126,126,150,180,126,184,150],[145,34,145,58,145,102,118,80,106,98,172,80,184,98,132,126,126,150,180,120,166,104]],pallof:[[145,34,145,58,145,102,118,78,132,80,172,78,158,80,132,126,128,150,158,126,162,150],[145,34,145,58,145,102,120,78,102,78,170,78,188,78,132,126,128,150,158,126,162,150]],ringrow:[[120,88,132,94,176,112,160,100,208,82,160,100,208,82,196,126,226,150,196,126,226,150],[158,72,168,82,194,106,182,92,216,82,182,92,216,82,206,126,232,150,206,126,232,150]],ringpush:[[84,106,98,110,174,120,132,116,204,88,132,116,234,88,194,126,224,146,194,126,224,146],[98,118,112,120,174,124,140,126,204,88,140,126,234,88,194,130,224,146,194,130,224,146]],support:[[145,80,145,96,145,126,116,100,106,92,174,100,184,92,132,138,128,150,158,138,162,150],[145,34,145,58,145,108,112,76,106,86,178,76,184,86,132,128,128,150,158,128,162,150]],ringcurl:[[122,88,134,94,178,112,160,100,210,82,160,100,234,82,196,126,226,150,196,126,226,150],[158,68,168,80,194,106,178,90,214,76,178,90,236,76,206,126,232,150,206,126,232,150]],ringtri:[[168,86,156,92,126,110,144,100,92,82,144,100,66,82,104,128,82,150,104,128,82,150],[150,76,140,86,118,108,132,94,92,82,132,94,66,82,100,128,80,150,100,128,80,150]],fallout:[[116,72,128,82,160,106,146,96,210,82,146,96,236,82,196,126,224,150,196,126,224,150],[94,92,108,100,154,114,136,106,210,82,136,106,236,82,194,130,224,150,194,130,224,150]]};
+function person(q,prop){const [hx,hy,sx,sy,px,py,lex,ley,lwx,lwy,rex,rey,rwx,rwy,lkx,lky,lfx,lfy,rkx,rky,rfx,rfy]=q;const L=(a,b,c,d)=>`<line class="limb" x1="${a}" y1="${b}" x2="${c}" y2="${d}"/>`;let z=`<line class="floor" x1="12" y1="152" x2="278" y2="152"/><line class="torso" x1="${sx}" y1="${sy}" x2="${px}" y2="${py}"/><circle class="head" cx="${hx}" cy="${hy}" r="12"/>${L(sx,sy,lex,ley)}${L(lex,ley,lwx,lwy)}${L(sx,sy,rex,rey)}${L(rex,rey,rwx,rwy)}${L(px,py,lkx,lky)}${L(lkx,lky,lfx,lfy)}${L(px,py,rkx,rky)}${L(rkx,rky,rfx,rfy)}`;if(["chin","hang"].includes(prop))z+=`<line class="prop" x1="70" y1="26" x2="220" y2="26"/>`;if(prop==="split")z+=`<line class="prop" x1="216" y1="114" x2="258" y2="114"/>`;if(prop==="ankle"||prop==="wall"||prop==="pec")z+=`<line class="prop" x1="236" y1="20" x2="236" y2="152"/>`;if(["pass","face","apart","lateral","hamcurl","pallof","extrot"].includes(prop))z+=`<path class="prop" d="M${lwx} ${lwy} L${rwx} ${rwy}"/>`;if(["ringrow","ringpush","support","ringcurl","ringtri","fallout"].includes(prop))z+=`<line class="prop" x1="214" y1="20" x2="214" y2="76"/><line class="prop" x1="238" y1="20" x2="238" y2="76"/><circle class="prop" cx="214" cy="82" r="10"/><circle class="prop" cx="238" cy="82" r="10"/>`;return `<svg viewBox="0 0 290 170" aria-hidden="true">${z}</svg>`}
+function card(x){let[n,d,c,t,k]=x,p=P[k]||P.stand;return `<article class="card"><div class="scenes"><div class="scene"><b>Start</b>${person(p[0],k)}</div><div class="scene"><b>Finish</b>${person(p[1],k)}</div></div><div class="info"><h3>${n}</h3><span class="dose">${d}</span><p class="cue">${c}</p><p class="target">${t}</p></div></article>`}document.getElementById("root").innerHTML=S.map(([id,t,n,a])=>`<section id="${id}"><div class="sh"><h2>${t}</h2><p>${n}</p></div><div class="grid">${a.map(card).join("")}</div></section>`).join("");
+</script></body></html>
